@@ -15,19 +15,20 @@ class Helper() {
         if (dao.name.length < 10) {
             throw HotelierException("Name Length Should Be Greater Than 10")
         }
-        Helper().isValidUrl(dao.image)
+        //Helper().isValidUrl(dao.image)
 
         if (dao.category in category) {
             throw HotelierException("Invalid Category")
         }
 
-        if (dao.rating in 0..5) {
+
+        if (dao.rating !in 0..5) {
             throw HotelierException("Rating Should Be Under Range 0 To 5");
         }
-        if (dao.reputation in 0..1000) {
+        if (dao.reputation !in 0..1000) {
             throw HotelierException("Reputation Should Be Under Range 0 To 1000");
         }
-        if (dao.location.zipcode.toString().length <= 5) {
+        if (dao.location.zipcode.toString().length < 5) {
             throw HotelierException("Zipcode Should Be Less Than 6 Digit");
         }
 
@@ -38,9 +39,8 @@ class Helper() {
             URL(url)
             return true
         } catch (e: Exception) {
-           throw HotelierException("Invalid Image URL")
+            throw HotelierException("Invalid Image URL")
         }
         return false
     }
-
 }

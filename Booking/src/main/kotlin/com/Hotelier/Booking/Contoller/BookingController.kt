@@ -2,29 +2,27 @@ package com.Hotelier.Booking.Contoller
 
 import com.Hotelier.Booking.Entity.BookingDao
 import com.Hotelier.Booking.services.BookingServices
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.util.ObjectUtils
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
-import java.util.*
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/Booking")
 class BookingController(val services: BookingServices) {
 
+    val logger = LoggerFactory.getLogger(this::class.java);
 
     @PostMapping("/create")
     fun create(@RequestBody dao: BookingDao): ResponseEntity<BookingDao> {
+        logger.info("Start Creating Hotelier")
         val bookingData = services.crateBooking(dao);
         if (ObjectUtils.isEmpty(bookingData)) {
+            logger.error("Hotelier Unable  To Create",HttpStatus.CREATED)
             return ResponseEntity<BookingDao>(HttpStatus.BAD_REQUEST)
         } else {
+            logger.info("Hotelier Created",HttpStatus.CREATED)
             return ResponseEntity(bookingData, HttpStatus.CREATED)
         }
     }
@@ -36,6 +34,18 @@ class BookingController(val services: BookingServices) {
             return ResponseEntity<BookingDao>(bookingData.get(), HttpStatus.OK)
         }
         return ResponseEntity<BookingDao>(HttpStatus.NOT_FOUND)
+    }
+
+    @GetMapping("/getAllBooking")
+    fun getAllBooking(): List<BookingDao> = services.getAllBooking();
+
+    @GetMapping("/filter")
+    fun filterBooking(@RequestParam search:String): List<BookingDao> = services.filterBookings(search);
+
+    @PutMapping("/update/{id}")
+    fun updateBookingData(@PathVariable id:Int,@RequestBody dao:BookingDao): ResponseEntity<BookingDao> {
+        val bookingData = services.updateBooking(id,dao);
+        return ResponseEntity<BookingDao>(bookingData, HttpStatus.OK)
     }
 
     @DeleteMapping("/deleteBooking/{id}")
