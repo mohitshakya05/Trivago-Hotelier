@@ -1,9 +1,6 @@
-package com.Hotelier.Booking.Entity
+package com.Hotelier.booking.entity
 
 import jakarta.persistence.*
-import jakarta.validation.constraints.Max
-import jakarta.validation.constraints.Min
-import lombok.Data
 
 @Entity
 @Table(name = "BOOKING_DEF")

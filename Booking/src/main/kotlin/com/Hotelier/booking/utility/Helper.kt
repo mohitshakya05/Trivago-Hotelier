@@ -1,7 +1,7 @@
-package com.Hotelier.Booking.Utility
+package com.Hotelier.booking.utility
 
-import com.Hotelier.Booking.Entity.BookingDao
-import com.Hotelier.Booking.Exception.HotelierException
+import com.Hotelier.booking.entity.BookingDao
+import com.Hotelier.booking.exception.HotelierException
 import java.net.URL
 
 class Helper() {
@@ -15,7 +15,7 @@ class Helper() {
         if (dao.name.length < 10) {
             throw HotelierException("Name Length Should Be Greater Than 10")
         }
-        //Helper().isValidUrl(dao.image)
+        Helper().isValidUrl(dao.image)
 
         if (dao.category in category) {
             throw HotelierException("Invalid Category")

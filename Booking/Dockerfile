@@ -1,4 +1,4 @@
 FROM openjdk:20
 EXPOSE 8080
-ADD target/Trivago-Hotelier.jar Trivago-Hotelier.jar
-ENTRYPOINT ["java","-jar","/Trivago-Hotelier.jar"]
+ADD target/trivago-hotelier.jar trivago-hotelier.jar
+ENTRYPOINT ["java","-jar","/trivago-hotelier.jar"]

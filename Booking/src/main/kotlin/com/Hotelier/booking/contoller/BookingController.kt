@@ -1,7 +1,7 @@
-package com.Hotelier.Booking.Contoller
+package com.Hotelier.booking.contoller
 
-import com.Hotelier.Booking.Entity.BookingDao
-import com.Hotelier.Booking.services.BookingServices
+import com.Hotelier.booking.entity.BookingDao
+import com.Hotelier.booking.services.BookingServices
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -9,7 +9,7 @@ import org.springframework.util.ObjectUtils
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/Booking")
+@RequestMapping("/Hotelier")
 class BookingController(val services: BookingServices) {
 
     val logger = LoggerFactory.getLogger(this::class.java);
@@ -28,7 +28,7 @@ class BookingController(val services: BookingServices) {
     }
 
     @GetMapping("/getBooking/{id}")
-    fun getBooking(id: Int): ResponseEntity<BookingDao> {
+    fun getBooking(@PathVariable id: Int): ResponseEntity<BookingDao> {
         val bookingData = services.getBooking(id);
         if (bookingData.isPresent) {
             return ResponseEntity<BookingDao>(bookingData.get(), HttpStatus.OK)
@@ -43,7 +43,7 @@ class BookingController(val services: BookingServices) {
     fun filterBooking(@RequestParam search:String): List<BookingDao> = services.filterBookings(search);
 
     @PutMapping("/update/{id}")
-    fun updateBookingData(@PathVariable id:Int,@RequestBody dao:BookingDao): ResponseEntity<BookingDao> {
+    fun updateBookingData(@PathVariable id:Int,@RequestBody dao: BookingDao): ResponseEntity<BookingDao> {
         val bookingData = services.updateBooking(id,dao);
         return ResponseEntity<BookingDao>(bookingData, HttpStatus.OK)
     }

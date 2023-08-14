@@ -1,4 +1,4 @@
-package com.Hotelier.Booking.Entity
+package com.Hotelier.booking.entity
 
 import jakarta.persistence.*
 

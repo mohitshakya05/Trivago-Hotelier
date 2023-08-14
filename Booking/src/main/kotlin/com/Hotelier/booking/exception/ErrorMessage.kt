@@ -1,4 +1,4 @@
-package com.Hotelier.Booking.Exception
+package com.Hotelier.booking.exception
 
 class ErrorMessage(
     var status: Int? = null,

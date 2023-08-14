@@ -1,4 +1,4 @@
-package com.Hotelier.Booking.Exception
+package com.Hotelier.booking.exception
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

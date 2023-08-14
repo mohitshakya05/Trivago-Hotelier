@@ -1,6 +1,6 @@
-package com.Hotelier.Booking.Reposietry
+package com.Hotelier.booking.repositry
 
-import com.Hotelier.Booking.Entity.BookingDao
+import com.Hotelier.booking.entity.BookingDao
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
