@@ -1,10 +1,10 @@
-package com.Hotelier.Booking.Entity
+package com.Hotelier.booking.entity
 
 import jakarta.persistence.*
 
 @Entity
 @Table(name="LOCATION")
-class LocationDao(
+data class LocationDao(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
