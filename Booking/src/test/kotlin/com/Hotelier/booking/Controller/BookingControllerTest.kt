@@ -21,15 +21,7 @@ import java.nio.charset.StandardCharsets
 class BookingControllerTest(@Autowired val mockMvc: MockMvc) {
     @MockBean
     lateinit var bookingSer : BookingServices;
-    /*@Test
-    fun getBookingsByIdTest() {
-        mockMvc.perform(
-            MockMvcRequestBuilders
-                .get("/Hotelier/getBooking/2").contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .characterEncoding(StandardCharsets.UTF_8)
-        ).andExpect(MockMvcResultMatchers.status().isOk());
-    }*/
+
     @Test
     fun filterBookingTest() {
         mockMvc.perform(
