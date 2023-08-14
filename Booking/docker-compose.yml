@@ -1,10 +1,10 @@
 version: "3"
 services:
   springboot-app:
-    # container_name: spring-app
+    #container_name: spring-app
     image: trivago-hotelier
     restart: always
     build: .
     ports:
-      - 7000:9090
+      - 8000-8999:8080
 
